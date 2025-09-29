@@ -64,10 +64,19 @@ include '../includes/header.inc.php';
 ?>
 
     <style>
-        .cart-item { animation: slideIn 0.3s ease-out; }
+        .cart-item {
+            animation: slideIn 0.3s ease-out;
+        }
+
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 
@@ -85,14 +94,15 @@ include '../includes/header.inc.php';
 
                 <div class="mb-4">
                     <input
-                        type="text"
-                        id="product-search"
-                        placeholder="Search products..."
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                            type="text"
+                            id="product-search"
+                            placeholder="Search products..."
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                     />
                 </div>
 
-                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[600px] overflow-y-auto">
+                <div id="products-grid"
+                     class="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[600px] overflow-y-auto">
                     <?php foreach ($products as $product): ?>
                         <div class="product-card border border-gray-200 rounded-lg p-4 hover:border-gold transition-colors cursor-pointer"
                              data-id="<?php echo $product['id']; ?>"
@@ -107,7 +117,9 @@ include '../includes/header.inc.php';
                                              alt="<?php echo htmlspecialchars($product['product_name']); ?>"
                                              class="w-full h-full object-cover rounded-lg">
                                     <?php else: ?>
-                                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                        <svg class="w-8 h-8 text-white"
+                                             fill="currentColor"
+                                             viewBox="0 0 24 24">
                                             <path d="M12 2C11.5 2 11 2.19 10.59 2.59L2.59 10.59C1.8 11.37 1.8 12.63 2.59 13.41L10.59 21.41C11.37 22.2 12.63 22.2 13.41 21.41L21.41 13.41C22.2 12.63 22.2 11.37 21.41 10.59L13.41 2.59C13 2.19 12.5 2 12 2M12 4L20 12L12 20L4 12L12 4M12 6L6 12L12 18L18 12L12 6Z"/>
                                         </svg>
                                     <?php endif; ?>
@@ -132,37 +144,49 @@ include '../includes/header.inc.php';
             <div class="bg-white rounded-2xl shadow-lg p-6 sticky top-24">
                 <h2 class="heading-font text-2xl font-bold text-gray-800 mb-4 flex items-center justify-between">
                     <span>Cart</span>
-                    <button id="clear-cart" class="text-sm text-red-500 hover:text-red-700">Clear</button>
+                    <button id="clear-cart"
+                            class="text-sm text-red-500 hover:text-red-700">Clear
+                    </button>
                 </h2>
 
-                <div id="cart-items" class="space-y-3 mb-4 max-h-[300px] overflow-y-auto">
+                <div id="cart-items"
+                     class="space-y-3 mb-4 max-h-[300px] overflow-y-auto">
                     <p class="text-gray-400 text-center py-8">Cart is empty</p>
                 </div>
 
                 <div class="border-t border-gray-200 pt-4 space-y-3">
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Subtotal:</span>
-                        <span id="subtotal" class="font-semibold">₹0.00</span>
+                        <span id="subtotal"
+                              class="font-semibold">₹0.00</span>
                     </div>
 
                     <div class="flex items-center space-x-2">
                         <label class="text-sm text-gray-600">Discount:</label>
-                        <input type="number" id="discount-percent" min="0" max="100" value="0" step="0.1"
+                        <input type="number"
+                               id="discount-percent"
+                               min="0"
+                               max="100"
+                               value="0"
+                               step="0.1"
                                class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gold">
                         <span class="text-sm text-gray-600">%</span>
                     </div>
 
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Discount Amount:</span>
-                        <span id="discount-amount" class="font-semibold text-red-500">-₹0.00</span>
+                        <span id="discount-amount"
+                              class="font-semibold text-red-500">-₹0.00</span>
                     </div>
 
                     <div class="flex justify-between text-lg border-t pt-3">
                         <span class="font-bold text-gray-800">Total:</span>
-                        <span id="total" class="font-bold text-gold">₹0.00</span>
+                        <span id="total"
+                              class="font-bold text-gold">₹0.00</span>
                     </div>
 
-                    <button id="checkout-btn" disabled
+                    <button id="checkout-btn"
+                            disabled
                             class="w-full bg-gold hover:bg-gold-dark text-white py-3 rounded-lg font-semibold transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
                         Proceed to Checkout
                     </button>
@@ -172,44 +196,61 @@ include '../includes/header.inc.php';
     </div>
 
     <!-- Checkout Modal -->
-    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div id="checkout-modal"
+         class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="heading-font text-2xl font-bold text-gray-800">Complete Sale</h2>
-                    <button id="close-modal" class="text-gray-400 hover:text-gray-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <button id="close-modal"
+                            class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6"
+                             fill="none"
+                             stroke="currentColor"
+                             viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
 
-                <form id="checkout-form" method="POST">
-                    <input type="hidden" name="cart_items" id="cart-items-input">
-                    <input type="hidden" name="discount_percent" id="discount-input">
+                <form id="checkout-form"
+                      method="POST">
+                    <input type="hidden"
+                           name="cart_items"
+                           id="cart-items-input">
+                    <input type="hidden"
+                           name="discount_percent"
+                           id="discount-input">
 
                     <div class="space-y-4">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Customer Name</label>
-                            <input type="text" name="customer_name"
+                            <input type="text"
+                                   name="customer_name"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
 
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Phone Number</label>
-                            <input type="tel" name="customer_phone"
+                            <input type="tel"
+                                   name="customer_phone"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
 
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Email</label>
-                            <input type="email" name="customer_email"
+                            <input type="email"
+                                   name="customer_email"
                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
                         </div>
 
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Payment Method</label>
-                            <select name="payment_method" required
+                            <select name="payment_method"
+                                    required
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
                                 <option value="Cash">Cash</option>
                                 <option value="Card">Card</option>
@@ -220,22 +261,26 @@ include '../includes/header.inc.php';
 
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2">Notes (Optional)</label>
-                            <textarea name="notes" rows="2"
+                            <textarea name="notes"
+                                      rows="2"
                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
                         </div>
 
                         <div class="bg-lavender rounded-lg p-4">
                             <div class="flex justify-between mb-1">
                                 <span class="text-gray-700">Subtotal:</span>
-                                <span id="modal-subtotal" class="font-semibold">₹0.00</span>
+                                <span id="modal-subtotal"
+                                      class="font-semibold">₹0.00</span>
                             </div>
                             <div class="flex justify-between mb-1">
                                 <span class="text-gray-700">Discount:</span>
-                                <span id="modal-discount" class="font-semibold text-red-500">-₹0.00</span>
+                                <span id="modal-discount"
+                                      class="font-semibold text-red-500">-₹0.00</span>
                             </div>
                             <div class="flex justify-between text-lg font-bold border-t border-gray-300 pt-2 mt-2">
                                 <span>Total:</span>
-                                <span id="modal-total" class="text-gold">₹0.00</span>
+                                <span id="modal-total"
+                                      class="text-gold">₹0.00</span>
                             </div>
                         </div>
 
@@ -254,7 +299,7 @@ include '../includes/header.inc.php';
 
         // Product click handler
         document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function () {
                 const product = {
                     id: parseInt(this.dataset.id),
                     name: this.dataset.name,
@@ -349,7 +394,7 @@ include '../includes/header.inc.php';
         document.getElementById('discount-percent').addEventListener('input', updateTotals);
 
         // Clear cart
-        document.getElementById('clear-cart').addEventListener('click', function() {
+        document.getElementById('clear-cart').addEventListener('click', function () {
             if (confirm('Clear all items from cart?')) {
                 cart = [];
                 renderCart();
@@ -357,7 +402,7 @@ include '../includes/header.inc.php';
         });
 
         // Product search
-        document.getElementById('product-search').addEventListener('input', function(e) {
+        document.getElementById('product-search').addEventListener('input', function (e) {
             const search = e.target.value.toLowerCase();
             document.querySelectorAll('.product-card').forEach(card => {
                 const searchText = card.dataset.search;
@@ -366,7 +411,7 @@ include '../includes/header.inc.php';
         });
 
         // Checkout button
-        document.getElementById('checkout-btn').addEventListener('click', function() {
+        document.getElementById('checkout-btn').addEventListener('click', function () {
             if (cart.length === 0) return;
 
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -385,12 +430,12 @@ include '../includes/header.inc.php';
         });
 
         // Close modal
-        document.getElementById('close-modal').addEventListener('click', function() {
+        document.getElementById('close-modal').addEventListener('click', function () {
             document.getElementById('checkout-modal').classList.add('hidden');
         });
 
         // Close modal on outside click
-        document.getElementById('checkout-modal').addEventListener('click', function(e) {
+        document.getElementById('checkout-modal').addEventListener('click', function (e) {
             if (e.target === this) {
                 this.classList.add('hidden');
             }

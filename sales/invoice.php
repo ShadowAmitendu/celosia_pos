@@ -25,25 +25,48 @@ include '../includes/header.inc.php';
 
     <style>
         @media print {
-            nav, footer, .no-print { display: none !important; }
-            body { background: white !important; }
-            .print-container { box-shadow: none !important; margin: 0 !important; }
+            nav, footer, .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .print-container {
+                box-shadow: none !important;
+                margin: 0 !important;
+            }
         }
     </style>
 
     <!-- Action Buttons -->
     <div class="flex justify-between items-center mb-6 no-print">
-        <a href="sales_history.php" class="text-gold hover:text-gold-dark font-semibold flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        <a href="sales_history.php"
+           class="text-gold hover:text-gold-dark font-semibold flex items-center space-x-2">
+            <svg class="w-5 h-5"
+                 fill="none"
+                 stroke="currentColor"
+                 viewBox="0 0 24 24">
+                <path stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"/>
             </svg>
             <span>Back to Sales History</span>
         </a>
 
         <div class="flex gap-3">
-            <button onclick="window.print()" class="bg-gold hover:bg-gold-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md flex items-center space-x-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+            <button onclick="window.print()"
+                    class="bg-gold hover:bg-gold-dark text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md flex items-center space-x-2">
+                <svg class="w-5 h-5"
+                     fill="none"
+                     stroke="currentColor"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
                 </svg>
                 <span>Print Invoice</span>
             </button>
@@ -58,7 +81,9 @@ include '../includes/header.inc.php';
                 <div>
                     <div class="flex items-center space-x-3 mb-2">
                         <div class="bg-gradient-to-br from-lavender to-pastel-pink rounded-full p-2">
-                            <svg class="w-10 h-10 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-10 h-10 text-gold"
+                                 fill="currentColor"
+                                 viewBox="0 0 24 24">
                                 <path d="M12 2C11.5 2 11 2.19 10.59 2.59L2.59 10.59C1.8 11.37 1.8 12.63 2.59 13.41L10.59 21.41C11.37 22.2 12.63 22.2 13.41 21.41L21.41 13.41C22.2 12.63 22.2 11.37 21.41 10.59L13.41 2.59C13 2.19 12.5 2 12 2M12 4L20 12L12 20L4 12L12 4M12 6L6 12L12 18L18 12L12 6Z"/>
                             </svg>
                         </div>
@@ -111,8 +136,10 @@ include '../includes/header.inc.php';
                     <tr class="border-b border-gray-200">
                         <td class="py-3 px-2 text-gray-800"><?php echo htmlspecialchars($item['product_name']); ?></td>
                         <td class="py-3 px-2 text-center text-gray-700"><?php echo $item['quantity']; ?></td>
-                        <td class="py-3 px-2 text-right text-gray-700">₹<?php echo number_format($item['price'], 2); ?></td>
-                        <td class="py-3 px-2 text-right text-gray-800 font-semibold">₹<?php echo number_format($item['subtotal'], 2); ?></td>
+                        <td class="py-3 px-2 text-right text-gray-700">
+                            ₹<?php echo number_format($item['price'], 2); ?></td>
+                        <td class="py-3 px-2 text-right text-gray-800 font-semibold">
+                            ₹<?php echo number_format($item['subtotal'], 2); ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

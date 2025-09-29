@@ -106,20 +106,25 @@ include '../includes/header.inc.php';
 
         <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-gold">
             <p class="text-gray-500 text-sm font-medium mb-1">Total Revenue</p>
-            <h3 class="text-3xl font-bold text-gray-800">₹<?php echo number_format($summary['total_revenue'], 2); ?></h3>
+            <h3 class="text-3xl font-bold text-gray-800">
+                ₹<?php echo number_format($summary['total_revenue'], 2); ?></h3>
         </div>
 
         <div class="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-pastel-pink">
             <p class="text-gray-500 text-sm font-medium mb-1">Total Discounts</p>
-            <h3 class="text-3xl font-bold text-gray-800">₹<?php echo number_format($summary['total_discounts'], 2); ?></h3>
+            <h3 class="text-3xl font-bold text-gray-800">
+                ₹<?php echo number_format($summary['total_discounts'], 2); ?></h3>
         </div>
     </div>
 
     <!-- Filters -->
     <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
-        <form method="GET" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <form method="GET"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
-                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>"
+                <input type="text"
+                       name="search"
+                       value="<?php echo htmlspecialchars($search); ?>"
                        placeholder="Search by name, phone, email, or ID..."
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent">
             </div>
@@ -130,7 +135,7 @@ include '../includes/header.inc.php';
                     <option value="">All Payment Methods</option>
                     <?php foreach ($payment_methods as $method): ?>
                         <option value="<?php echo htmlspecialchars($method); ?>"
-                            <?php echo $payment_method === $method ? 'selected' : ''; ?>>
+                                <?php echo $payment_method === $method ? 'selected' : ''; ?>>
                             <?php echo htmlspecialchars($method); ?>
                         </option>
                     <?php endforeach; ?>
@@ -138,13 +143,17 @@ include '../includes/header.inc.php';
             </div>
 
             <div>
-                <input type="date" name="date_from" value="<?php echo htmlspecialchars($date_from); ?>"
+                <input type="date"
+                       name="date_from"
+                       value="<?php echo htmlspecialchars($date_from); ?>"
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                        placeholder="From Date">
             </div>
 
             <div>
-                <input type="date" name="date_to" value="<?php echo htmlspecialchars($date_to); ?>"
+                <input type="date"
+                       name="date_to"
+                       value="<?php echo htmlspecialchars($date_to); ?>"
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                        placeholder="To Date">
             </div>
@@ -166,8 +175,14 @@ include '../includes/header.inc.php';
     <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
         <?php if (empty($sales)): ?>
             <div class="text-center py-12">
-                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4"
+                     fill="none"
+                     stroke="currentColor"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
                 <h3 class="text-xl font-semibold text-gray-700 mb-2">No Sales Found</h3>
                 <p class="text-gray-500 mb-6">No sales match your search criteria</p>
@@ -209,9 +224,12 @@ include '../includes/header.inc.php';
                                 </span>
                             </td>
                             <td class="py-4 px-6 text-right">
-                                <div class="font-bold text-lg text-gray-800">₹<?php echo number_format($sale['total_amount'], 2); ?></div>
+                                <div class="font-bold text-lg text-gray-800">
+                                    ₹<?php echo number_format($sale['total_amount'], 2); ?></div>
                                 <?php if ($sale['discount_amount'] > 0): ?>
-                                    <div class="text-xs text-red-500">-₹<?php echo number_format($sale['discount_amount'], 2); ?> off</div>
+                                    <div class="text-xs text-red-500">
+                                        -₹<?php echo number_format($sale['discount_amount'], 2); ?> off
+                                    </div>
                                 <?php endif; ?>
                             </td>
                             <td class="py-4 px-6">
@@ -220,7 +238,8 @@ include '../includes/header.inc.php';
                                        class="bg-gold hover:bg-gold-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                         View
                                     </a>
-                                    <a href="export_pdf.php?id=<?php echo $sale['id']; ?>" target="_blank"
+                                    <a href="export_pdf.php?id=<?php echo $sale['id']; ?>"
+                                       target="_blank"
                                        class="bg-pastel-pink hover:bg-opacity-80 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                                         PDF
                                     </a>

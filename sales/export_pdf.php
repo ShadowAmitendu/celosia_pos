@@ -24,7 +24,8 @@ header('Content-Type: text/html; charset=utf-8');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
     <title>Invoice #<?php echo str_pad($sale['id'], 5, '0', STR_PAD_LEFT); ?> - CELOSIA CANDLES</title>
     <style>
         * {
@@ -229,6 +230,7 @@ header('Content-Type: text/html; charset=utf-8');
             body {
                 padding: 0;
             }
+
             .container {
                 padding: 20px;
             }
@@ -338,7 +340,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 <script>
     // Auto-print when page loads
-    window.onload = function() {
+    window.onload = function () {
         window.print();
     };
 </script>
