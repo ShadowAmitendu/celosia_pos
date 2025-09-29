@@ -106,11 +106,18 @@ include '../includes/header.inc.php';
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
                         >
                             <option value="">Select Category</option>
-                            <option value="Scented Candle">Scented Candle</option>
-                            <option value="Seasonal">Seasonal</option>
-                            <option value="Wellness">Wellness</option>
-                            <option value="Premium">Premium</option>
+                            <option value="Regular Candle">Regular Candle</option>
+                            <option value="Boxed Set - Regular">Boxed Set - Regular</option>
+                            <option value="Floral Candle">Floral Candle</option>
+                            <option value="Festive Special">Festive Special</option>
+                            <option value="Premium Set">Premium Set</option>
                             <option value="Gift Set">Gift Set</option>
+                            <option value="Free Gift">Free Gift</option>
+                            <option value="Scented">Scented</option>
+                            <option value="Jewellery">Jewellery</option>
+                            <option value="Animal and Birds">Animal and Birds</option>
+                            <option value="Letters">Letters</option>
+                            <option value="Food Candles">Food Candles</option>
                         </select>
                     </div>
 
