@@ -27,6 +27,11 @@ header('Content-Type: text/html; charset=utf-8');
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <title>Invoice #<?php echo str_pad($sale['id'], 5, '0', STR_PAD_LEFT); ?> - CELOSIA CANDLES</title>
+
+    <!-- Import JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -40,6 +45,10 @@ header('Content-Type: text/html; charset=utf-8');
             line-height: 1.6;
             background: #fff;
             padding: 20px;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .container {
@@ -75,6 +84,7 @@ header('Content-Type: text/html; charset=utf-8');
 
         .invoice-info {
             text-align: right;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .invoice-info h2 {
@@ -94,6 +104,7 @@ header('Content-Type: text/html; charset=utf-8');
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .customer-details h3 {
@@ -113,6 +124,7 @@ header('Content-Type: text/html; charset=utf-8');
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         thead {
@@ -155,6 +167,7 @@ header('Content-Type: text/html; charset=utf-8');
             display: flex;
             justify-content: flex-end;
             margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .totals-content {
@@ -191,6 +204,7 @@ header('Content-Type: text/html; charset=utf-8');
             display: flex;
             justify-content: space-between;
             font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .notes {
@@ -199,6 +213,7 @@ header('Content-Type: text/html; charset=utf-8');
             padding: 15px;
             border-radius: 5px;
             margin-bottom: 30px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .notes h3 {
@@ -247,7 +262,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <p>Handcrafted with Love</p>
                 <p>Illuminating moments since 2024</p>
             </div>
-            <div class="invoice-info">
+            <div class="invoice-info mono">
                 <h2>INVOICE</h2>
                 <p><strong>#<?php echo str_pad($sale['id'], 5, '0', STR_PAD_LEFT); ?></strong></p>
                 <p><?php echo date('F d, Y', strtotime($sale['created_at'])); ?></p>
@@ -258,7 +273,7 @@ header('Content-Type: text/html; charset=utf-8');
 
     <!-- Customer Details -->
     <?php if ($sale['customer_name'] || $sale['customer_phone'] || $sale['customer_email']): ?>
-        <div class="customer-details">
+        <div class="customer-details mono">
             <h3>Bill To:</h3>
             <?php if ($sale['customer_name']): ?>
                 <p><strong><?php echo htmlspecialchars($sale['customer_name']); ?></strong></p>
@@ -273,7 +288,7 @@ header('Content-Type: text/html; charset=utf-8');
     <?php endif; ?>
 
     <!-- Items Table -->
-    <table>
+    <table class="mono">
         <thead>
         <tr>
             <th>Item</th>
@@ -295,7 +310,7 @@ header('Content-Type: text/html; charset=utf-8');
     </table>
 
     <!-- Totals -->
-    <div class="totals">
+    <div class="totals mono">
         <div class="totals-content">
             <div class="total-row subtotal">
                 <span>Subtotal:</span>
@@ -317,14 +332,14 @@ header('Content-Type: text/html; charset=utf-8');
     </div>
 
     <!-- Payment Method -->
-    <div class="payment-method">
+    <div class="payment-method mono">
         <span><strong>Payment Method:</strong></span>
         <span><?php echo htmlspecialchars($sale['payment_method']); ?></span>
     </div>
 
     <!-- Notes -->
     <?php if ($sale['notes']): ?>
-        <div class="notes">
+        <div class="notes mono">
             <h3>Notes:</h3>
             <p><?php echo nl2br(htmlspecialchars($sale['notes'])); ?></p>
         </div>

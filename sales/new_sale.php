@@ -106,15 +106,15 @@ include '../includes/header.inc.php';
                     <?php foreach ($products as $product): ?>
                         <div class="product-card border border-gray-200 rounded-lg p-4 hover:border-gold transition-colors cursor-pointer"
                              data-id="<?php echo $product['id']; ?>"
-                             data-name="<?php echo htmlspecialchars($product['product_name']); ?>"
+                             data-name="<?php echo h($product['product_name']); ?>"
                              data-price="<?php echo $product['price']; ?>"
                              data-stock="<?php echo $product['quantity']; ?>"
                              data-search="<?php echo strtolower($product['product_name'] . ' ' . $product['category']); ?>">
                             <div class="flex items-center space-x-3">
                                 <div class="w-16 h-16 bg-gradient-to-br from-lavender to-pastel-pink rounded-lg flex items-center justify-center flex-shrink-0">
                                     <?php if ($product['image'] && file_exists("../assets/images/products/" . $product['image'])): ?>
-                                        <img src="../assets/images/products/<?php echo htmlspecialchars($product['image']); ?>"
-                                             alt="<?php echo htmlspecialchars($product['product_name']); ?>"
+                                        <img src="../assets/images/products/<?php echo h($product['image']); ?>"
+                                             alt="<?php echo h($product['product_name']); ?>"
                                              class="w-full h-full object-cover rounded-lg">
                                     <?php else: ?>
                                         <svg class="w-8 h-8 text-white"
@@ -125,8 +125,8 @@ include '../includes/header.inc.php';
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <h3 class="font-semibold text-gray-800 truncate"><?php echo htmlspecialchars($product['product_name']); ?></h3>
-                                    <p class="text-xs text-gray-500"><?php echo htmlspecialchars($product['category']); ?></p>
+                                    <h3 class="font-semibold text-gray-800 truncate"><?php echo h($product['product_name']); ?></h3>
+                                    <p class="text-xs text-gray-500"><?php echo h($product['category']); ?></p>
                                     <div class="flex items-center justify-between mt-1">
                                         <span class="text-lg font-bold text-gold">₹<?php echo number_format($product['price'], 2); ?></span>
                                         <span class="text-xs text-gray-500">Stock: <?php echo $product['quantity']; ?></span>

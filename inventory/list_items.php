@@ -28,8 +28,8 @@ try {
     $stmt->execute($params);
     $items = $stmt->fetchAll();
 
-    // Get categories for filter
-    $stmt = $pdo->query("SELECT DISTINCT category FROM inventory WHERE category IS NOT NULL AND category != '' ORDER BY category");
+    // Get categories from the categories table
+    $stmt = $pdo->query("SELECT name FROM categories ORDER BY name ASC");
     $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
 } catch (PDOException $e) {
     $_SESSION['error'] = 'Error loading inventory: ' . $e->getMessage();
@@ -134,6 +134,20 @@ include '../includes/header.inc.php';
                 </svg>
                 <span>Add Product</span>
             </a>
+
+            <a href="manage_categories.php"
+               class="bg-pastel-blue hover:bg-opacity-80 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors shadow-md flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5"
+                     fill="none"
+                     stroke="currentColor"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                </svg>
+                <span>Categories</span>
+            </a>
         </form>
     </div>
 
@@ -181,7 +195,8 @@ include '../includes/header.inc.php';
                         <img src="<?php echo h($imagePath); ?>?v=<?php echo filemtime($imagePath); ?>"
                              alt="<?php echo h($item['product_name']); ?>"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                             loading="lazy"/>
+                             loading="lazy"
+                             onerror="this.src='../assets/images/placeholder.png'"/>
                     <?php else: ?>
                         <svg class="w-20 h-20 text-white opacity-50"
                              fill="currentColor"
@@ -228,6 +243,7 @@ include '../includes/header.inc.php';
                             Edit
                         </a>
                         <a href="delete_item.php?id=<?php echo $item['id']; ?>"
+                           onclick="return confirm('Are you sure you want to delete this product?')"
                            class="flex-1 bg-red-100 hover:bg-red-200 text-red-700 py-2 rounded-lg font-medium text-center transition-colors text-sm">
                             Delete
                         </a>

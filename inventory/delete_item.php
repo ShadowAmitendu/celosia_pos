@@ -106,8 +106,8 @@ include '../includes/header.inc.php';
                 <div class="flex items-center space-x-4">
                     <div class="w-24 h-24 bg-gradient-to-br from-lavender to-pastel-pink rounded-lg flex items-center justify-center flex-shrink-0">
                         <?php if ($item['image'] && file_exists("../assets/images/products/" . $item['image'])): ?>
-                            <img src="../assets/images/products/<?php echo htmlspecialchars($item['image']); ?>"
-                                 alt="<?php echo htmlspecialchars($item['product_name']); ?>"
+                            <img src="../assets/images/products/<?php echo h($item['image']); ?>"
+                                 alt="<?php echo h($item['product_name']); ?>"
                                  class="w-full h-full object-cover rounded-lg">
                         <?php else: ?>
                             <svg class="w-12 h-12 text-white"
@@ -119,10 +119,10 @@ include '../includes/header.inc.php';
                     </div>
                     <div class="flex-1">
                         <h3 class="font-bold text-xl text-gray-800 mb-1">
-                            <?php echo htmlspecialchars($item['product_name']); ?>
+                            <?php echo h($item['product_name']); ?>
                         </h3>
                         <p class="text-sm text-gray-600 mb-2">
-                            <?php echo htmlspecialchars($item['category']); ?>
+                            <?php echo h($item['category']); ?>
                         </p>
                         <div class="flex items-center justify-between">
                             <span class="text-lg font-bold text-gold">₹<?php echo number_format($item['price'], 2); ?></span>

@@ -25,6 +25,10 @@
                         gold: '#D4AF37',
                         'gold-dark': '#B8941F'
                     }
+                },
+                fontFamily: {
+                    'heading': ['Inter', 'sans-serif'],        // optional custom heading font
+                    'mono-custom': ['JetBrains Mono', 'monospace'] // monospace
                 }
             }
         }
@@ -36,7 +40,7 @@
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
           crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
     <style>
         body {
@@ -45,6 +49,10 @@
 
         .heading-font {
             font-family: 'Inter Display', sans-serif;
+        }
+
+        code, pre, kbd, samp, .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
     </style>
 </head>
