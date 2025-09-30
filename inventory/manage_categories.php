@@ -1,4 +1,5 @@
 <?php
+global $pdo;
 require_once '../config/db.php';
 $pageTitle = 'Manage Categories - CELOSIA CANDLES';
 

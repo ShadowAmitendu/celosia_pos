@@ -1,10 +1,10 @@
 <?php
 // Database Configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'celosia_pos');
-
+const DB_HOST = 'localhost';
+const DB_USER = 'root';
+const DB_PASS = '';
+const DB_NAME = 'celosia_pos';
+global $pdo;
 try {
     $pdo = new PDO(
         "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
@@ -31,9 +31,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Helper function to sanitize output
-function h($string)
+function h($string): string
 {
     return htmlspecialchars($string ?? '', ENT_QUOTES, 'UTF-8');
 }
-
-?>

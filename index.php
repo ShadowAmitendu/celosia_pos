@@ -1,4 +1,5 @@
 <?php
+global $pdo;
 require_once 'config/db.php';
 $pageTitle = 'Dashboard - CELOSIA CANDLES';
 
@@ -265,7 +266,7 @@ include 'includes/header.inc.php';
 <div class="bg-white rounded-2xl shadow-lg p-6 mt-8">
     <div class="flex items-center justify-between mb-6">
         <h2 class="heading-font text-2xl font-bold text-gray-800">Popular Products</h2>
-        <a href="inventory/inventory_list.php"
+        <a href="./inventory/list_items.php"
            class="text-gold hover:text-gold-dark font-semibold text-sm flex items-center space-x-1">
             <span>View All</span>
             <svg class="w-4 h-4"

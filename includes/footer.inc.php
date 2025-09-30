@@ -5,7 +5,7 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
             <div class="text-center md:text-left mb-4 md:mb-0">
-                <h3 class="heading-font text-xl font-bold text-gray-800">@CELOSIACANDLES</h3>
+                <h3 class="heading-font text-xl font-bold text-gray-800">@CELOSIA_CANDLES</h3>
                 <p class="text-gray-600 text-sm">Illuminating moments since 2024</p>
             </div>
 

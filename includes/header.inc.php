@@ -51,7 +51,7 @@
             font-family: 'Inter Display', sans-serif;
         }
 
-        code, pre, kbd, samp, .font-mono {
+        code, pre, kbd, samp {
             font-family: 'JetBrains Mono', monospace;
         }
     </style>
@@ -66,8 +66,8 @@
             <?php
             // Determine the correct path to index.php based on current location
             $rootPath = '';
-            if (strpos($_SERVER['PHP_SELF'], '/inventory/') !== false ||
-                    strpos($_SERVER['PHP_SELF'], '/sales/') !== false) {
+            if (str_contains($_SERVER['PHP_SELF'], '/inventory/') ||
+                    str_contains($_SERVER['PHP_SELF'], '/sales/')) {
                 $rootPath = '../';
             }
             ?>
@@ -81,7 +81,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h1 class="heading-font text-2xl font-bold text-gray-800">@CELOSIACANDLES</h1>
+                    <h1 class="heading-font text-2xl font-bold text-gray-800">@CELOSIA_CANDLES</h1>
                     <p class="text-xs text-gray-600">Handcrafted with Love</p>
                 </div>
             </a>

@@ -1,4 +1,5 @@
 <?php
+global $pdo;
 require_once '../config/db.php';
 
 $id = $_GET['id'] ?? 0;
